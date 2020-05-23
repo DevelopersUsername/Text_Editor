@@ -329,6 +329,42 @@ files:
         }
     }
   learner_created: false
+- name: src/editor/TextEditor.java
+  visible: true
+  text: |
+    package editor;
+
+    import javax.swing.*;
+
+    public class TextEditor extends JFrame {
+        public TextEditor() {
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            setSize(300, 300);
+            setTitle("TextArea");
+            initComponents();
+            setVisible(true);
+            setLayout(null);
+        }
+
+        private void initComponents() {
+            JTextArea textArea = new JTextArea();
+            textArea.setName("TextArea");
+            textArea.setBounds(40, 20,150, 20);
+            add(textArea);
+        }
+    }
+  learner_created: true
+- name: src/editor/ApplicationRunner.java
+  visible: true
+  text: |
+    package editor;
+
+    public class ApplicationRunner {
+        public static void main(String[] args) {
+            new TextEditor();
+        }
+    }
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/38/stages/202/implement
 status: Unchecked
 record: -1

@@ -15,7 +15,7 @@ public class TextEditor extends JFrame {
     private void initComponents() {
         JTextArea textArea = new JTextArea();
         textArea.setName("TextArea");
-        textArea.setBounds(40, 20,150, 25);
+        textArea.setBounds(40, 20,150, 20);
         add(textArea);
     }
 }
