@@ -5,14 +5,17 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="delegatedBuild" value="false" />
+        <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Problems/Assignments" />
             <option value="$PROJECT_DIR$/Problems/Calculator" />
             <option value="$PROJECT_DIR$/Problems/Iterations" />
             <option value="$PROJECT_DIR$/Problems/Returning from a method" />
+            <option value="$PROJECT_DIR$/Text Editor/task" />
             <option value="$PROJECT_DIR$/util" />
           </set>
         </option>
