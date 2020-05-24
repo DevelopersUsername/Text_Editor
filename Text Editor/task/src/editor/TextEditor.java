@@ -32,12 +32,12 @@ public class TextEditor extends JFrame {
 
         saveButton.setName("SaveButton");
         saveButton.setBounds(100, 70, 100, 30);
-        saveButton.addActionListener(actionEvent -> whiteFile(fileNameField.getText(), textArea.getText()));
+        saveButton.addActionListener(actionEvent -> saveText(fileNameField.getText(), textArea.getText()));
         add(saveButton);
 
         loadButton.setName("LoadButton");
         loadButton.setBounds(100, 70, 100, 30);
-        loadButton.addActionListener(actionEvent -> textArea.setText(readFile(fileNameField.getText())));
+        loadButton.addActionListener(actionEvent -> textArea.setText(loadText(fileNameField.getText())));
         add(loadButton);
 
         textArea.setName("TextArea");
@@ -47,16 +47,17 @@ public class TextEditor extends JFrame {
         getContentPane().add(scrollableTextArea);
     }
 
-    String readFile(String pathToFile) {
+    String loadText(String pathToFile) {
+
         try {
-            return Files.readString (Paths.get ("./Text Editor/task/" + pathToFile));
+            return Files.readString(Paths.get("./Text Editor/task/" + pathToFile));
         } catch(IOException e) {
             System.out.printf("An exception occurs %s", e.getMessage());
             return "";
         }
     }
 
-    void whiteFile(String pathToFile, String text) {
+    void saveText(String pathToFile, String text) {
 
         try (OutputStream outputStream = new FileOutputStream("./Text Editor/task/" + pathToFile, false)) {
             outputStream.write(text.getBytes());
