@@ -2,14 +2,17 @@ package editor;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class TextEditor extends JFrame {
     public TextEditor() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(300, 420);
+        setLocationRelativeTo(null);
         setTitle("Text Editor");
         initComponents();
         setVisible(true);
@@ -20,6 +23,33 @@ public class TextEditor extends JFrame {
 
         getContentPane().setLayout(new FlowLayout());
 
+        // Menu
+
+        // Menu bar
+        JMenuBar menuBar = new JMenuBar();
+        JMenu menuFile = new JMenu("File");
+        menuFile.setName("MenuFile");
+        menuFile.setMnemonic(KeyEvent.VK_F);
+
+        // Menu items
+        JMenuItem menuLoad = new JMenuItem("Load");
+        menuLoad.setName("MenuLoad");
+        menuFile.add(menuLoad);
+
+        JMenuItem menuSave = new JMenuItem("Save");
+        menuSave.setName("MenuSave");
+        menuFile.add(menuSave);
+
+        JMenuItem menuExit = new JMenuItem("Exit");
+        menuExit.setName("MenuExit");
+        menuFile.addSeparator();
+        menuFile.add(menuExit);
+
+        menuBar.add(menuFile);
+        setJMenuBar(menuBar);
+
+
+        // Elements
         JTextField fileNameField = new JTextField();
         JButton saveButton = new JButton("Save");
         JButton loadButton = new JButton("Load");
@@ -32,12 +62,10 @@ public class TextEditor extends JFrame {
 
         saveButton.setName("SaveButton");
         saveButton.setBounds(100, 70, 100, 30);
-        saveButton.addActionListener(actionEvent -> saveText(fileNameField.getText(), textArea.getText()));
         add(saveButton);
 
         loadButton.setName("LoadButton");
         loadButton.setBounds(100, 70, 100, 30);
-        loadButton.addActionListener(actionEvent -> textArea.setText(loadText(fileNameField.getText())));
         add(loadButton);
 
         textArea.setName("TextArea");
@@ -45,12 +73,20 @@ public class TextEditor extends JFrame {
 
         scrollableTextArea.setName("ScrollPane");
         getContentPane().add(scrollableTextArea);
+
+
+        // Listeners
+        saveButton.addActionListener(actionEvent -> saveText(fileNameField.getText(), textArea.getText()));
+        menuSave.addActionListener(actionEvent -> saveText(fileNameField.getText(), textArea.getText()));
+        loadButton.addActionListener(actionEvent -> textArea.setText(loadText(fileNameField.getText())));
+        menuLoad.addActionListener(actionEvent -> textArea.setText(loadText(fileNameField.getText())));
+        menuExit.addActionListener(actionEvent -> System.exit(0));
     }
 
     String loadText(String pathToFile) {
 
         try {
-            return Files.readString(Paths.get("./Text Editor/task/" + pathToFile));
+            return new String(Files.readAllBytes(Paths.get("./Text Editor/task/" + pathToFile)));
         } catch(IOException e) {
             System.out.printf("An exception occurs %s", e.getMessage());
             return "";
@@ -59,10 +95,11 @@ public class TextEditor extends JFrame {
 
     void saveText(String pathToFile, String text) {
 
-        try (OutputStream outputStream = new FileOutputStream("./Text Editor/task/" + pathToFile, false)) {
-            outputStream.write(text.getBytes());
-        } catch(IOException e) {
-            System.out.printf("An exception occurs %s", e.getMessage());
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(pathToFile))) {
+            writer.write(text);
+            writer.flush();
+        } catch (IOException e) {
+            System.out.println("Cant save file" + e);
         }
     }
 }
