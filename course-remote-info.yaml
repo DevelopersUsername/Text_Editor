@@ -123,12 +123,8 @@ topics:
   1:
   - title: Immutability
     theory_id: 7929
-  - title: Command line overview
-    theory_id: 8977
-  - title: What are streams
-    theory_id: 5533
-  - title: Input streams
-    theory_id: 9723
+  - title: Computer programming
+    theory_id: 8739
   - title: What is an exception
     theory_id: 3497
   - title: Hierarchy of exceptions
@@ -141,6 +137,10 @@ topics:
     theory_id: 3492
   - title: Functional interfaces and lambda expressions
     theory_id: 3601
+  - title: Introduction to operating systems
+    theory_id: 9704
+  - title: Command line overview
+    theory_id: 8977
   - title: Files
     theory_id: 3635
   - title: Reading files
@@ -151,14 +151,14 @@ topics:
     theory_id: 3506
   - title: JVM, JRE, and JDK
     theory_id: 3499
-  - title: Running programs on your computer
-    theory_id: 3746
   - title: Errors in programs
     theory_id: 3536
   - title: Objects
     theory_id: 4727
   - title: Boxing and unboxing
     theory_id: 3595
+  - title: Running programs on your computer
+    theory_id: 3746
   2:
   - title: JMenu
     theory_id: 6427
