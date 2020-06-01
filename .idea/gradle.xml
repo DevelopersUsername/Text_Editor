@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/Problems/Assignments" />
             <option value="$PROJECT_DIR$/Problems/Calculator" />
+            <option value="$PROJECT_DIR$/Problems/Check the clock time" />
             <option value="$PROJECT_DIR$/Problems/Creating list" />
             <option value="$PROJECT_DIR$/Problems/Iterations" />
             <option value="$PROJECT_DIR$/Problems/Kidnapper of Ice cream" />
@@ -24,6 +25,7 @@
             <option value="$PROJECT_DIR$/Problems/Ternary predicate" />
             <option value="$PROJECT_DIR$/Problems/Test learners" />
             <option value="$PROJECT_DIR$/Problems/The longest ascending sequence" />
+            <option value="$PROJECT_DIR$/Problems/Vehicle registration number" />
             <option value="$PROJECT_DIR$/Text Editor/task" />
             <option value="$PROJECT_DIR$/util" />
           </set>
