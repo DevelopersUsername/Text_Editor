@@ -9,7 +9,6 @@ public class Main {
 
         String regex = "\\b(?:_[A-Za-z0-9]|[A-Z-a-z])\\w*\\b";
 
-
         for (int i = 0; i < numberOfVariables; i++) {
             String identifier = scanner.nextLine();
             if (!identifier.matches(regex)) {
