@@ -21,3 +21,7 @@ content:
 - In the middle of a word
 - Find a word with a given length
 - Number parsing
+- Is between
+- Extracting big numbers from a text
+- Extracting words from a text
+- Find all passwords
