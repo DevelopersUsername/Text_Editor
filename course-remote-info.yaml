@@ -22,8 +22,6 @@ topics:
     theory_id: 7929
   - title: Libraries
     theory_id: 8504
-  - title: Binary numbers
-    theory_id: 5544
   - title: IDE
     theory_id: 3805
   - title: What is an exception
@@ -54,8 +52,6 @@ topics:
     theory_id: 3510
   - title: Primitive and reference types
     theory_id: 5035
-  - title: Final variables
-    theory_id: 7427
   - title: Array
     theory_id: 3511
   - title: Comments
@@ -78,16 +74,18 @@ topics:
     theory_id: 3514
   - title: String
     theory_id: 3523
+  - title: Final variables
+    theory_id: 7427
   - title: Conditional statement
     theory_id: 3503
+  - title: Ternary operator
+    theory_id: 3506
   - title: The for-loop
     theory_id: 3505
   - title: The while and do-while loops
     theory_id: 3498
   - title: Branching statements
     theory_id: 3507
-  - title: Ternary operator
-    theory_id: 3506
   - title: Defining methods
     theory_id: 3590
   - title: The main method
@@ -149,6 +147,8 @@ topics:
     theory_id: 9704
   - title: Command line overview
     theory_id: 8977
+  - title: Parameters and options
+    theory_id: 9746
   - title: Files
     theory_id: 3635
   - title: Reading files

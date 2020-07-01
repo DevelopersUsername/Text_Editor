@@ -11,8 +11,40 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.function.Supplier;
+
+class OsCheck {
+    /**
+     * types of Operating Systems
+     */
+    public enum OSType {
+        Windows, MacOS, Linux, Other
+    };
+
+    // cached result of OS detection
+    protected static OSType detectedOS;
+
+    public static OSType getOperatingSystemType() {
+        if (detectedOS == null) {
+            String OS = System.getProperty(
+                "os.name", "generic")
+                .toLowerCase(Locale.ENGLISH);
+            if ((OS.contains("mac"))
+                || (OS.contains("darwin"))) {
+                detectedOS = OSType.MacOS;
+            } else if (OS.contains("win")) {
+                detectedOS = OSType.Windows;
+            } else if (OS.contains("nux")) {
+                detectedOS = OSType.Linux;
+            } else {
+                detectedOS = OSType.Other;
+            }
+        }
+        return detectedOS;
+    }
+}
 
 
 class TestClue {
@@ -36,8 +68,12 @@ public class EditorTest extends SwingTest<TestClue> {
 
     @Before
     public void fixLookup() {
-        window.robot().settings().componentLookupScope(ComponentLookupScope.ALL);
+        window.robot().settings()
+            .componentLookupScope(ComponentLookupScope.ALL);
     }
+
+    static boolean notWindows =
+        OsCheck.getOperatingSystemType() != OsCheck.OSType.Windows;
 
     private String dir = System.getProperty("user.dir") + File.separator;
     private File fileDir = new File(dir);
@@ -148,7 +184,14 @@ public class EditorTest extends SwingTest<TestClue> {
         }
         frame.setVisible(false);
         fileChooser.setCurrentDirectory(fileDir);
-        fileChooser.fileNameTextBox().setText(searchField.text());
+
+        if (OsCheck.getOperatingSystemType() == OsCheck.OSType.MacOS) {
+            fileChooser.selectFile(new File(
+                fileDir + File.separator + searchField.text()));
+        } else {
+            fileChooser.fileNameTextBox().setText(searchField.text());
+        }
+
         fileChooser.approve();
         frame.setVisible(true);
     }
@@ -387,6 +430,10 @@ public class EditorTest extends SwingTest<TestClue> {
                 "FileChooser doesn't appear on the second " +
                     "press on SaveButton but should appear every time",
                 () -> {
+                    if (notWindows) {
+                        return true;
+                    }
+
                     searchField.setText(filename1);
                     textArea.setText(textToSave1);
 
@@ -405,6 +452,10 @@ public class EditorTest extends SwingTest<TestClue> {
             new TestCase<TestClue>().setAttach(new TestClue(
                 "Text should be the same after saving and loading same file",
                 () -> {
+                    if (notWindows) {
+                        return true;
+                    }
+
                     String[] texts = {textToSave2, textToSave1};
                     String[] files = {filename1, filename2};
 
@@ -439,6 +490,9 @@ public class EditorTest extends SwingTest<TestClue> {
                 "TextArea should be empty if user tries to " +
                     "load file that doesn't exist",
                 () -> {
+                    if (notWindows) {
+                        return true;
+                    }
 
                     textArea.setText(textToSave1);
                     searchField.setText(noExistFile);
@@ -453,6 +507,10 @@ public class EditorTest extends SwingTest<TestClue> {
             new TestCase<TestClue>().setAttach(new TestClue(
                 "TextArea should correctly save and load an empty file",
                 () -> {
+                    if (notWindows) {
+                        return true;
+                    }
+
                     textArea.setText("");
                     searchField.setText(filename1);
 
@@ -474,6 +532,10 @@ public class EditorTest extends SwingTest<TestClue> {
                 "Text should be the same after saving " +
                     "and loading same file using MenuLoad",
                 () -> {
+                    if (notWindows) {
+                        return true;
+                    }
+
                     String[] texts = {textToSave2, textToSave1};
                     String[] files = {filename1, filename2};
 
@@ -508,6 +570,9 @@ public class EditorTest extends SwingTest<TestClue> {
                 "TextArea should be empty if user tries to " +
                     "load file that doesn't exist using MenuLoad",
                 () -> {
+                    if (notWindows) {
+                        return true;
+                    }
 
                     textArea.setText(textToSave1);
                     searchField.setText(noExistFile);
@@ -523,6 +588,10 @@ public class EditorTest extends SwingTest<TestClue> {
                 "TextArea should correctly save " +
                     "and load an empty file using menu",
                 () -> {
+                    if (notWindows) {
+                        return true;
+                    }
+
                     textArea.setText("");
                     searchField.setText(filename1);
 
