@@ -29,3 +29,6 @@ content:
 - Writing a thread for printing numbers
 - Message notifier as a thread
 - String processor
+- VeganPizza
+- Ordering the execution of threads
+- Summing with threads
