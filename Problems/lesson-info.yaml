@@ -33,3 +33,4 @@ content:
 - Ordering the execution of threads
 - Summing with threads
 - Calculate the number of distinct characters
+- The first occurrence in the subarray
