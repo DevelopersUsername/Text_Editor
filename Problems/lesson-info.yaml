@@ -34,3 +34,6 @@ content:
 - Summing with threads
 - Calculate the number of distinct characters
 - The first occurrence in the subarray
+- Multithreaded counter
+- Countdown counter
+- Counting number of instances

@@ -15,6 +15,8 @@
             <option value="$PROJECT_DIR$/Problems/Calculate the number of distinct characters" />
             <option value="$PROJECT_DIR$/Problems/Calculator" />
             <option value="$PROJECT_DIR$/Problems/Check the clock time" />
+            <option value="$PROJECT_DIR$/Problems/Countdown counter" />
+            <option value="$PROJECT_DIR$/Problems/Counting number of instances" />
             <option value="$PROJECT_DIR$/Problems/Creating list" />
             <option value="$PROJECT_DIR$/Problems/Extracting big numbers from a text" />
             <option value="$PROJECT_DIR$/Problems/Extracting words from a text" />
@@ -29,6 +31,7 @@
             <option value="$PROJECT_DIR$/Problems/Kidnapper of Ice cream" />
             <option value="$PROJECT_DIR$/Problems/Max of two integers" />
             <option value="$PROJECT_DIR$/Problems/Message notifier as a thread" />
+            <option value="$PROJECT_DIR$/Problems/Multithreaded counter" />
             <option value="$PROJECT_DIR$/Problems/Number parsing" />
             <option value="$PROJECT_DIR$/Problems/Ordering the execution of threads" />
             <option value="$PROJECT_DIR$/Problems/Points on the 2D plane" />
